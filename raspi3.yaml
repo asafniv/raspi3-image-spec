@@ -107,11 +107,6 @@ steps:
       mkdir -p "${ROOT?}/etc/systemd/system/systemd-remount-fs.service.requires/"
       ln -s /etc/systemd/system/rpi3-resizerootfs.service "${ROOT?}/etc/systemd/system/systemd-remount-fs.service.requires/rpi3-resizerootfs.service"
 
-      install -m 644 -o root -g root rpi3-generate-ssh-host-keys.service "${ROOT?}/etc/systemd/system"
-      mkdir -p "${ROOT?}/etc/systemd/system/multi-user.target.requires/"
-      ln -s /etc/systemd/system/rpi3-generate-ssh-host-keys.service "${ROOT?}/etc/systemd/system/multi-user.target.requires/rpi3-generate-ssh-host-keys.service"
-      rm -f ${ROOT?}/etc/ssh/ssh_host_*_key*
-
       cat >> "${ROOT?}/etc/motd" <<'EOT'
 
       Please change the root password by running passwd
